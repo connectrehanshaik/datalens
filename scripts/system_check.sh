@@ -19,17 +19,28 @@ else
 fi
 echo ""
 
-# 2. Check Memory Consumption
+# 2. Check Inode Usage
+echo "[*] Checking Inode Usage..."
+INODE_USAGE=$(df -i / | grep / | awk '{print $5}' | sed 's/%//g')
+
+if [ "$INODE_USAGE" -gt 80 ]; then
+    echo "WARNING: Inode usage is critically high at ${INODE_USAGE}%!"
+else
+    echo "OK: Inode usage is healthy at ${INODE_USAGE}%."
+fi
+echo ""
+
+# 3. Check Memory Consumption
 echo "[*] Checking Memory (RAM) Usage..."
 free -h
 echo ""
 
-# 3. Check Top 3 Memory-Consuming Processes
+# 4. Check Top 3 Memory-Consuming Processes
 echo "[*] Top 3 Processes Consuming Memory:"
 ps aux --sort=-%mem | head -n 4
 echo ""
 
-# 4. Check Network Listening Ports
+# 5. Check Network Listening Ports
 echo "[*] Active Listening Ports (TCP/UDP):"
 ss -tulnp | head -n 10
 echo ""
