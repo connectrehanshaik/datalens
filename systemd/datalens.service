@@ -8,7 +8,11 @@ User=shaik
 WorkingDirectory=/mnt/d/projects/datalens
 ExecStart=/usr/bin/python3 /mnt/d/projects/datalens/scripts/heartbeat_worker.py
 Restart=always
-RestartSec=2
+RestartSec=3
+
+# Resource Boundaries (CGroup v2 Hardening)
+MemoryMax=64M
+CPUQuota=20%
 
 [Install]
 WantedBy=multi-user.target
