@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  datalens-worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: datalens_worker
+    restart: unless-stopped
+    ports:
+      - "9100:9100"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.20'
+          memory: 64M
+    volumes:
+      - /var/log/datalens:/var/log/datalens

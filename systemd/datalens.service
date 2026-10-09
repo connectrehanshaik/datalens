@@ -1,5 +1,5 @@
 [Unit]
-Description=DataLens Production Heartbeat Service
+Description=DataLens Production Worker & Metrics Service
 Documentation=https://github.com/connectrehanshaik/datalens
 After=network.target
 
@@ -11,11 +11,11 @@ ExecStart=/usr/bin/python3 /mnt/d/projects/datalens/scripts/heartbeat_worker.py
 Restart=always
 RestartSec=3
 
-# Resource Boundaries (Linux CGroup v2 Enforcement)
+# Resource Isolation (CGroup v2)
 MemoryMax=64M
 CPUQuota=20%
 
-# Stream Forwarding
+# Logging
 StandardOutput=journal
 StandardError=journal
 
