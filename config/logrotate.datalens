@@ -6,4 +6,5 @@
     compress
     delaycompress
     copytruncate
+    create 0644 shaikshaik
 }
