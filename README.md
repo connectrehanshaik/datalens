@@ -2,7 +2,7 @@
 
 Comprehensive Linux infrastructure reference implementation on Ubuntu/WSL2 featuring systemd supervision, CGroup v2 constraints, zero-downtime log rotation, Prometheus instrumentation, containerized deployment, and CI/CD automation.
 
-## 🏗 System Architecture
+## System Architecture
 * **Worker Daemon**: Python 3.12 unbuffered heartbeat worker with timezone-aware UTC timestamps.
 * **Telemetry**: Native Prometheus metrics server exposed on `:9100/metrics` and health probe on `:9100/healthz`.
 * **Supervision**: `systemd` (`datalens.service`) managing lifecycle policies with automated restart logic (`Restart=always`).
@@ -11,7 +11,7 @@ Comprehensive Linux infrastructure reference implementation on Ubuntu/WSL2 featu
 * **Containerization**: Multi-stage lightweight OCI container with enforced Docker Compose resource limits.
 * **CI/CD**: GitHub Actions pipeline checking syntax, validating configurations, and verifying Docker builds on every commit.
 
-## 📁 Repository Layout
+## Repository Layout
 ```text
 ├── .github/workflows/ci.yml    # GitHub Actions Continuous Integration pipeline
 ├── config/logrotate.datalens   # Zero-downtime log rotation & gzip policy
